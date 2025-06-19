@@ -20,6 +20,103 @@ Esta API permite realizar operações CRUD (Create, Read, Update, Delete) em uma
 - H2 Database
 - Gradle
 
+## ⚡ Benchmark: Kotlin vs TypeScript
+
+Como desenvolvedor que trabalha principalmente com TypeScript, aqui está uma comparação das principais diferenças e vantagens de cada linguagem para desenvolvimento de APIs:
+
+### 🎯 **Kotlin (Este Projeto)**
+
+**Vantagens:**
+- **Performance**: Execução nativa na JVM, significativamente mais rápida que Node.js
+- **Type Safety**: Sistema de tipos estático em tempo de compilação
+- **Null Safety**: Prevenção de erros de null pointer em tempo de compilação
+- **Concorrência**: Suporte nativo a coroutines para operações assíncronas
+- **Maturidade**: Framework Spring Boot maduro e bem estabelecido
+- **Tooling**: Excelente suporte de IDEs (IntelliJ IDEA)
+
+**Desvantagens:**
+- **Curva de Aprendizado**: Mais complexo para iniciantes
+- **Tempo de Compilação**: Builds mais lentos que TypeScript
+- **Ecossistema**: Menos pacotes disponíveis comparado ao npm
+
+### 🟦 **TypeScript (Comparação)**
+
+**Vantagens:**
+- **Familiaridade**: Sintaxe similar ao JavaScript
+- **Flexibilidade**: Tipagem opcional e gradual
+- **Ecossistema**: Vastas bibliotecas npm disponíveis
+- **Desenvolvimento Rápido**: Hot reload e builds rápidos
+- **Comunidade**: Grande comunidade ativa
+
+**Desvantagens:**
+- **Performance**: Execução em runtime, mais lento que Kotlin
+- **Type Safety**: Tipagem em tempo de compilação, mas pode ser contornada
+- **Null Safety**: Não há proteção nativa contra null/undefined
+- **Maturidade**: Frameworks menos maduros comparado ao Spring
+
+### 📊 **Comparação Prática**
+
+| Aspecto | Kotlin + Spring Boot | TypeScript + Express |
+|---------|---------------------|---------------------|
+| **Tempo de Startup** | ~2-3 segundos | ~1 segundo |
+| **Performance** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Type Safety** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Curva de Aprendizado** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Desenvolvimento Rápido** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Manutenibilidade** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Ecossistema** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+
+### 🔄 **Migração de TypeScript para Kotlin**
+
+**Conceitos Similares:**
+```typescript
+// TypeScript
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+}
+
+class BookService {
+  async findAll(): Promise<Book[]> {
+    return await repository.find();
+  }
+}
+```
+
+```kotlin
+// Kotlin
+data class Book(
+    val id: Long = 0,
+    val title: String,
+    val author: String
+)
+
+class BookService(private val repository: BookRepository) {
+    suspend fun findAll(): List<Book> = repository.findAll()
+}
+```
+
+**Principais Diferenças:**
+- **Sintaxe**: Kotlin usa `val/var` vs `const/let` do TypeScript
+- **Null Safety**: Kotlin tem `?` para tipos nullable vs `| null` do TypeScript
+- **Coroutines**: `suspend` functions vs `async/await`
+- **Data Classes**: Kotlin gera automaticamente equals, hashCode, toString
+
+### 🎯 **Quando Usar Cada Um**
+
+**Use Kotlin quando:**
+- Performance é crítica
+- Trabalhando com sistemas enterprise
+- Precisa de type safety máximo
+- Projeto de longa duração
+
+**Use TypeScript quando:**
+- Desenvolvimento rápido é prioridade
+- Equipe já familiarizada com JavaScript
+- Prototipagem e MVP
+- Projetos menores ou médios
+
 ## 📦 Pré-requisitos
 
 - Java 17 ou superior
